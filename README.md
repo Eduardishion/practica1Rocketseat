@@ -5,7 +5,9 @@ Este repositorio contiene la practica de la maratona del sitio Rocketseat https:
 
 En cual sigue 4 faces:
 
-1.- Maquetación de la app : HTML y CSS 
+1.- Maquetación de la app : HTML y CSS Video 1
+1.- Maquetación de la app y aplicando detalles: HTML y CSS Video 2
+
 
 Esta es la vista previa de la aplicacion:
 
