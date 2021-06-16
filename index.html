@@ -10,28 +10,40 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-
     <header>
-      <h1 id="logo">dev.finance$</h1>
+      <!-- <h1 id="logo">dev.finance$</h1> -->
+      <img src="./assets/logo.svg" alt="dev.finance$">
     </header>
     <main class="container">
       <section id="balance">
-        <h2>Balance</h2>
+        <h2 class="sr-only">Balance</h2>
         <div class="card">
-            <h3>Entradas</h3>
+            <h3>
+              <!-- span para mantener un elemento en linea  -->
+              <span>Entradas</span>
+              <img src="./assets/income.svg" alt="Imagen de Entradas">
+            </h3>
             <p>R$ 5.000.00</p>
         </div>
         <div class="card">
-            <h3>Salidas</h3>
+            <h3>
+              <!-- span para mantener un elemento en linea  -->
+              <span>Salidas</span>
+              <img src="./assets/expense.svg" alt="Imagen de Salidas">
+            </h3>
             <p>R$ 2.000.00</p>
         </div>
         <div class="card total">
-            <h2>Total</h2>
+            <h3>
+              <!-- span para mantener un elemento en linea  -->
+              <span>Total</span>
+              <img src="./assets/total.svg" alt="Imagen de Total">
+            </h3>
             <p>R$ 3.000.00</p>
         </div>
       </section>
       <section id="transactions">
-        <h2>Transacciones</h2>
+        <h2 class="sr-only" >Transacciones</h2>
         <table id="data-table">
           <thead>
             <tr>
