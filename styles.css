@@ -1,4 +1,5 @@
 /*--------------estilos globales----------- */
+/* recomnendado para aprender mas https://css-tricks.com/ */
 /* variables para colores */
 :root{
     --dark-blue: #373f5f;
@@ -11,6 +12,16 @@
     box-sizing: border-box;
 
 }
+
+html{
+    /* un 100% de font-size aquivale a un 16px*/
+    /* para obtener el tamaño de letra porcentajes equivalente en px*/
+    /* para obtener este valor se hace una regla de 3
+        100% x 15px  / 16px =  93.75%
+    */
+    font-size: 93.75%; /*equivale a 15px*/
+}
+
 body{
     background-color: #f0f2f5;
     font-family: 'Poppins', sans-serif;
@@ -37,6 +48,7 @@ body{
 }
 
 
+ 
 /*--------------titulos----------- */
 h2{
     margin-top: 3.2rem;
@@ -45,7 +57,25 @@ h2{
 
     font-weight: normal;
 }
+
 /*--------------titulos----------- */
+
+/* --------enlaces y botones------ */
+a{
+    color: #3dd705;
+    /* quitar el subrayado del enlace */
+    text-decoration: none;
+}
+/* cuando pasas el mouse por encima */
+a:hover{
+    color: #49AA26;
+}
+/*la caja que tenga las dos .button .new al mismo tiempo */
+.button.new{
+    display: inline-block;
+    margin-bottom: .8rem;
+}
+/* --------enlaces y botones------ */
 
 /*--------------estilos globales----------- */
 
@@ -127,14 +157,25 @@ header{
 
 /*-----------table----------- */
 #data-table{
+    display: block;
     width: 100%;
     border-spacing: 0 0.5rem;
     color: #969cb3;
+
+    /* para darle flujo a un elemento si mover los otros ni mover la pantalla completamente*/
+    overflow-x: auto;
+
 }
 
 table thead tr th:first-child,
 table tbody tr td:first-child{
     border-radius: 0.25rem 0 0 0.25rem;
+}
+
+
+table thead tr th:last-child,
+table tbody tr td:last-child{
+    border-radius:  0 0.25rem 0.25rem 0 ;
 }
 
 table thead th{
@@ -193,3 +234,22 @@ footer{
 
 
 
+/*-----------media querys ----------- */
+/*breakpoints*/
+@media(min-width:800px){
+    html{
+        /* descubir a cuanto equivale utiliando regla de 3 */
+        font-size: 87.5%; /*equivale a */
+    }
+    #balance{
+        /* uso de grid layout */
+        display: grid;
+        /* grilla de 3 columnas */
+        /* 1fr significa un fracion que sera el tamaño de cada columna*/
+        /* para repetir elementos usar repeat */
+        grid-template-columns: repeat(3,1fr);
+        /* para poner espacio entre columnas*/
+        gap: 2rem;
+    }
+}
+/*-----------media querys ----------- */
