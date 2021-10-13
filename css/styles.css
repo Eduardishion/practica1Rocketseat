@@ -1,8 +1,12 @@
 /*--------------estilos globales----------- */
 /* recomnendado para aprender mas https://css-tricks.com/ */
 /* variables para colores */
+/* mequede en minuto 2:00 pero falta rectificar los botones*/ 
 :root{
     --dark-blue: #373f5f;
+    --green: #49AA26;
+    --ligth-green:#3dd705;
+    --red:#e92929;
 }
 /* selector universal  */
 *{
@@ -28,12 +32,12 @@ body{
 }
 
 .sr-only{
-    /* truco */
+    /* truco donde se aplican pequeños efectovisuales */
     position: absolute;
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1px;
+    margin: -1px;/*movimos un elemento -1 */
     overflow: hidden;
     clip: rect(0,0,0,0);
     white-space: nowrap;
@@ -62,19 +66,71 @@ h2{
 
 /* --------enlaces y botones------ */
 a{
-    color: #3dd705;
+    color: var(--green);
     /* quitar el subrayado del enlace */
     text-decoration: none;
 }
 /* cuando pasas el mouse por encima */
-a:hover{
-    color: #49AA26;
+a:hover {
+    color:  var(--ligth-green);
+}
+
+
+button{
+    /*estilos para todos las etiquetas botones*/
+    /*tamalo de los botones*/
+    width: 100%;
+    height: 50px;
+    /*sin borde*/
+    border: none;
+    /*colo de letra*/
+    color: white;
+    /*color de fondo*/
+    background: var(--green);
+    /*espaciado*/
+    padding: 0;
+    /*redondeo de esquinas */
+    border-radius: 0.25rem;
+    /*cambiar el cursor a una manita */
+    cursor: pointer;
+}
+
+button:hover{
+    /*al pasar el mouse cambio de color */
+    background: var(--ligth-green);
 }
 /*la caja que tenga las dos .button .new al mismo tiempo */
 .button.new{
     display: inline-block;
     margin-bottom: .8rem;
 }
+
+.button.cancel{
+    /*dolor de letra*/
+    color: var(--red);
+    /*color del borde */
+    border: 2px var(--red) solid;
+    /*redonde de esquinas */
+    border-radius: 0.25rem;
+
+    height: 50px;
+
+    /*alineacion de texto interno del boton */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /*aplicaicon de una opacidad*/
+    opacity: 0.6;
+}
+
+.button.cancel:hover{
+    opacity: 1;
+}
+
+
+
+
 /* --------enlaces y botones------ */
 
 /*--------------estilos globales----------- */
@@ -146,7 +202,7 @@ header{
 
 /* elemento que tiene la clase green */
 .card.total{
-    background: #49AA26;
+    background: var(--green);
     color: white;
 }
 
@@ -156,23 +212,29 @@ header{
 
 
 /*-----------table----------- */
-#data-table{
-    display: block;
-    width: 100%;
-    border-spacing: 0 0.5rem;
-    color: #969cb3;
 
-    /* para darle flujo a un elemento si mover los otros ni mover la pantalla completamente*/
-    overflow-x: auto;
+#transactions{
+     display: block;
+     width: 100%;
+     /* para darle flujo a un elemento sin mover los otros sin mover la pantalla completamente solo ese eleemento*/
+     /*cuando fuera necesario permite que sea fluido para usar con el dedo */
+     overflow-x: auto;
 
 }
 
+#data-table{
+    width: 100%;
+    border-spacing: 0 0.5rem;
+    color: #969cb3;
+}
+
+/*para redondear las esquinas de los primeros elementos cajas*/
 table thead tr th:first-child,
 table tbody tr td:first-child{
     border-radius: 0.25rem 0 0 0.25rem;
 }
 
-
+/*para redondear las esquinas de los ultimos  elementos cajas*/
 table thead tr th:last-child,
 table tbody tr td:last-child{
     border-radius:  0 0.25rem 0.25rem 0 ;
@@ -222,6 +284,103 @@ td.expence{
 
 /*-----------table----------- */
 
+/* ---------vista del modal-------- */
+.model-overlay{
+    /*para que use todo el tamaño de la pantalla*/
+    width: 100%;
+    height: 100%;
+    /* para un color de fondo pero con transparente usamos rgba()*/
+    background-color: rgba(0, 0, 0, 0.7);
+    /* para la posicion fija para que no se mueva al mover el scrioll*/
+    position: fixed;
+    /* para  psicionarlo desde la vertical y horizontal 0, desde arriba comensando desde el piexel 0 */
+    top: 0;
+    /* para poscionarla caja interna  de este contenedor y centrarla en horisontal y vertical*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* para esconder el modal y se active al dar clic al boton */
+    opacity: 0;
+    visibility: hidden;
+
+    /*para que se mueva a parte superior de todas las capas */
+    z-index: 999;
+}
+
+.modal{
+    /*estilos de caja blanca */
+    background: #F0F2F5;
+    padding: 2.4rem;
+    /*para mentener el tamaño del modal */
+    /*width: 90%;*/
+    /*max-width: 500px;*/
+
+    /*mover el modal sobre las capas */
+    position: relative;
+    z-index: 1;
+}
+
+/* cuando el elemento tenga esas dos clases, cuando este activo, esta removiendo y colocando las clases */
+.model-overlay.active{
+    /* para mostrar el modal  */
+    opacity: 1;
+    /*para ocultar el modal*/
+    visibility: visible;
+}
+
+/* ---------vista del modal-------- */
+
+/* ---form del modal--- */
+#form{
+    /*para que no se pueda hacer mas pequeño solo a 500px*/
+    max-width: 500px;
+}
+
+#form h2{
+    /*quitar el margen al h2*/
+   margin-top: 0;
+    
+}
+
+input{
+    /* para quitar borde de input */
+    border: none;
+    /* para un borde redondo */
+    border-radius: 0.2rem;
+    /* relleno interno */
+    padding: 0.8rem;
+    /* para hacer que el input ocupe todo el espacio en el div */
+    width: 100%;
+}
+
+.input-group{
+    /*para colocar margen a los inputs en la parte superior */
+    margin-top: 0.8rem;
+}
+
+.input-group small{
+    /*para darle una opacidad al texto del small*/
+    opacity: 0.4;
+}
+
+.input-group.actions{
+    /*para alinear los botonos en forma vertical */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group.actions .button, .input-group.actions button{
+    width: 48%;
+}
+/* ---form del modal--- */
+
+/* ---------vista del modal-------- */
+
+
+
+
 
 /*-----------contenedor footer----------- */
 footer{
@@ -232,15 +391,18 @@ footer{
 }
 /*-----------contenedor footer----------- */
 
-
+/*--------------------------nedia querys y responsive------------------------------*/
 
 /*-----------media querys ----------- */
-/*breakpoints*/
+/*breakpoints para patalla */
 @media(min-width:800px){
     html{
         /* descubir a cuanto equivale utiliando regla de 3 */
         font-size: 87.5%; /*equivale a */
     }
+    /*aqui es donde el contender se transfome en 3 columnas al tener la pantalla de escritorio
+     al palicar display: grid;
+    */
     #balance{
         /* uso de grid layout */
         display: grid;
@@ -252,4 +414,4 @@ footer{
         gap: 2rem;
     }
 }
-/*-----------media querys ----------- */
+/*-----------media querys ----------- 
