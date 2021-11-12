@@ -65,6 +65,8 @@ const Transaction = {
 		console.log(Transaction.all.length);
 		Transaction.all.push(newTransaction);
 		console.log(Transaction.all);
+		App.reload();
+
 	},
 	incomes(){
 
@@ -148,6 +150,10 @@ const DOM = {
 		
 		document.getElementById("totalDisplay")
 				.innerHTML = Utils.formatCurrency(Transaction.total());
+	},
+
+	clearTrasactions(){
+		DOM.transactionsContainer.innerHTML = "";
 	}
 }
 
@@ -180,14 +186,26 @@ const Utils = {
 	}
 }
 
+const App = {
+	init(){
+		Transaction.all.forEach(transaction => {
+			DOM.addTransaction(transaction);
+			
+		});
+		
+		DOM.updateBalance();
+		
+
+	},
+	reload(){
+		DOM.clearTrasactions();
+		App.init();
+	},
+
+}
 
 
-Transanctions.forEach(transaction => {
-	DOM.addTransaction(transaction);
-	
-});
-
-DOM.updateBalance();
+App.init();
 
 Transaction.add({
 	id: 4,
@@ -195,3 +213,7 @@ Transaction.add({
 	amount: 2000, //el precio de momento colocamos dos ceros mas para despues formatear la salida en valor monetario,
 	date: '23/04/21'
 });
+
+
+
+
