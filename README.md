@@ -3,7 +3,7 @@ Este repositorio contiene la practica de la maratona del sitio Rocketseat https:
 
 <img src="https://raw.githubusercontent.com/Rocketseat/awesome/master/assets/logo_rocketseat.png">
 
-En cual sigue 4 faces:
+En cual sigue 4 faces haciendo uso de HTML, CSS, JS:
 
 1.-Aula 1:  Maquetación de la app : HTML y CSS parte 1
 
