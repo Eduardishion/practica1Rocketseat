@@ -30,26 +30,26 @@ const Modal = {
 //arreglo de transacciones y donde guardaremos las transacciones
 const Transanctions = [
 	{
-		id: 1,
+		
 		description: "lus",
 		amount: 50000, //el precio de momento colocamos dos ceros mas para despues formatear la salida en valor monetario,
 		date: '23/01/21'
 	
 	},
 	{
-		id: 2,
+		
 		description: "webside",
 		amount: -50001, //el precio de momento colocamos dos ceros mas para despues formatear la salida en valor monetario,
 		date: '23/04/21'
 	},
 	{
-		id: 3,
+		
 		description: "internet",
 		amount: -20012, //el precio de momento colocamos dos ceros mas para despues formatear la salida en valor monetario,
 		date: '23/02/21'
 	},
 	{
-		id: 4,
+		
 		description: "internet",
 		amount: 200000, //el precio de momento colocamos dos ceros mas para despues formatear la salida en valor monetario,
 		date: '23/02/21'
@@ -67,6 +67,13 @@ const Transaction = {
 		console.log(Transaction.all);
 		App.reload();
 
+	},
+	remove(index){
+		//para poder eliminar un elemento del arreglo 
+		//se le pasa un index y el numero de elementos que queremos eliminar
+		Transaction.all.splice(index,1);
+		//volvelmos a recargar el app
+		App.reload();
 	},
 	incomes(){
 
@@ -208,12 +215,11 @@ const App = {
 App.init();
 
 Transaction.add({
-	id: 4,
 	description: "new webside",
 	amount: 2000, //el precio de momento colocamos dos ceros mas para despues formatear la salida en valor monetario,
 	date: '23/04/21'
 });
 
 
-
+Transaction.remove(4);
 
